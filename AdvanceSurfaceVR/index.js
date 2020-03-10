@@ -1,5 +1,14 @@
 import React from "react";
-import { AppRegistry, StyleSheet, VrButton, Text, View } from "react-360";
+import {
+  AppRegistry,
+  NativeModules,
+  StyleSheet,
+  VrButton,
+  Text,
+  View
+} from "react-360";
+
+const surfaceModule = NativeModules.surfaceModule;
 
 export default class AdvanceSurfaceVR extends React.Component {
   render() {
@@ -9,11 +18,17 @@ export default class AdvanceSurfaceVR extends React.Component {
           <Text>Change Dim.</Text>
         </VrButton>
 
-        <VrButton style={styles.greetingBox}>
+        <VrButton
+          style={styles.greetingBox}
+          onClick={() => surfaceModule.changeSurfaceType("Flat")}
+        >
           <Text>Flat</Text>
         </VrButton>
 
-        <VrButton style={styles.greetingBox}>
+        <VrButton
+          style={styles.greetingBox}
+          onClick={() => surfaceModule.changeSurfaceType("Cylinder")}
+        >
           <Text>Cylinder</Text>
         </VrButton>
 
