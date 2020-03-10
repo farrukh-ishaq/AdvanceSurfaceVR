@@ -15,6 +15,12 @@ export default class AdvanceSurfaceVR extends React.Component {
     width: 1000,
     height: 600
   };
+  //wrapper method after
+
+  changeSurfaceDimenions(width, height) {
+    surfaceModule.resizeSurface(width, height);
+    this.setState({ width: width, height: height });
+  }
 
   render() {
     return (
@@ -26,7 +32,7 @@ export default class AdvanceSurfaceVR extends React.Component {
       >
         <VrButton
           style={styles.greetingBox}
-          onClick={() => surfaceModule.resizeSurface(500, 300)}
+          onClick={() => this.changeSurfaceDimenions(500, 300)}
         >
           <Text>Change Dim.</Text>
         </VrButton>
@@ -45,7 +51,10 @@ export default class AdvanceSurfaceVR extends React.Component {
           <Text>Cylinder</Text>
         </VrButton>
 
-        <VrButton style={styles.greetingBox}>
+        <VrButton
+          style={styles.greetingBox}
+          onClick={() => this.changeSurfaceDimenions(1000, 600)}
+        >
           <Text>Reset</Text>
         </VrButton>
 
