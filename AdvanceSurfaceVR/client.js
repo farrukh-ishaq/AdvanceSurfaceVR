@@ -11,6 +11,8 @@ function init(bundle, parent, options = {}) {
     ...options
   });
   //create a variable to get the local state of shape then use in function changeSurfaceType
+  // Initiall the width and height are 600,1000 when we call resizeSurface the panel surface change.
+
   surface = r360.getDefaultSurface();
   // Render your app content to the default cylinder surface
   r360.renderToSurface(
@@ -28,6 +30,10 @@ function init(bundle, parent, options = {}) {
 class surfaceModule extends Module {
   constructor() {
     super("surfaceModule");
+  }
+
+  resizeSurface(width, height) {
+    surface.resize(width, height);
   }
 
   changeSurfaceType(Type) {

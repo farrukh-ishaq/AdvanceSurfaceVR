@@ -11,10 +11,23 @@ import {
 const surfaceModule = NativeModules.surfaceModule;
 
 export default class AdvanceSurfaceVR extends React.Component {
+  state = {
+    width: 1000,
+    height: 600
+  };
+
   render() {
     return (
-      <View style={styles.panel}>
-        <VrButton style={styles.greetingBox}>
+      <View
+        style={[
+          styles.panel,
+          { width: this.state.width, height: this.state.height }
+        ]}
+      >
+        <VrButton
+          style={styles.greetingBox}
+          onClick={() => surfaceModule.resizeSurface(500, 300)}
+        >
           <Text>Change Dim.</Text>
         </VrButton>
 
@@ -47,8 +60,8 @@ export default class AdvanceSurfaceVR extends React.Component {
 const styles = StyleSheet.create({
   panel: {
     // Fill the entire surface
-    width: 1000,
-    height: 600,
+    // width: 1000,
+    // height: 600,
     backgroundColor: "rgba(255, 255, 255, 0.4)",
     justifyContent: "center",
     alignItems: "center"
