@@ -10,6 +10,21 @@ import {
 
 const surfaceModule = NativeModules.surfaceModule;
 
+class ButtonSurface extends React.Component {
+  render() {
+    return (
+      <View style={styles.buttonPanel}>
+        <VrButton
+          style={styles.greetingBox}
+          onClick={() => surfaceModule.createPanel()}
+        >
+          <Text>Create Panel</Text>
+        </VrButton>
+      </View>
+    );
+  }
+}
+
 export default class AdvanceSurfaceVR extends React.Component {
   state = {
     width: 1000,
@@ -58,7 +73,10 @@ export default class AdvanceSurfaceVR extends React.Component {
           <Text>Reset</Text>
         </VrButton>
 
-        <VrButton style={styles.greetingBox}>
+        <VrButton
+          style={styles.greetingBox}
+          onClick={() => surfaceModule.destroyPanel()}
+        >
           <Text style={styles.greeting}>Destroy</Text>
         </VrButton>
       </View>
@@ -96,3 +114,4 @@ const styles = StyleSheet.create({
 });
 
 AppRegistry.registerComponent("AdvanceSurfaceVR", () => AdvanceSurfaceVR);
+AppRegistry.registerComponent("ButtonSurface", () => ButtonSurface);
